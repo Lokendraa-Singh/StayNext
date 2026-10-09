@@ -1,0 +1,46 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="hero">
+  <h1>Find your next stay</h1>
+  <p>Villas, cabins, beach houses and more, picked for your next trip.</p>
+</div>
+
+<% if (allListings.length === 0) { %>
+  <div class="empty-state text-center">
+    <i class="fa-regular fa-building fa-3x mb-3"></i>
+    <h4>No listings yet</h4>
+    <p>Be the first to add a place.</p>
+    <a href="/listings/new" class="btn btn-brand rounded-pill px-4">Add a listing</a>
+  </div>
+<% } %>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4 listing-grid">
+  <% for(let listing of allListings) { %>
+    <div class="col">
+      <a href="/listings/<%= listing.id %>" class="text-decoration-none text-dark">
+        <div class="card listing-tile">
+          <div class="img-wrap">
+            <img
+              src="<%= listing.image.url %>"
+              class="card-img-top"
+              alt="<%= listing.title %>"
+              loading="lazy"
+            />
+            <div class="card-img-overlay"></div>
+          </div>
+
+          <div class="card-body">
+            <div class="tile-title"><%= listing.title %></div>
+            <div class="tile-location">
+              <i class="fa-solid fa-location-dot"></i>
+              <%= listing.location %>, <%= listing.country %>
+            </div>
+            <p class="card-price">
+              <b>&#8377;<%= (listing.price || 0).toLocaleString("en-IN") %></b> / night
+            </p>
+          </div>
+        </div>
+      </a>
+    </div>
+  <% } %>
+</div>

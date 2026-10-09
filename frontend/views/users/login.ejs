@@ -1,0 +1,31 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="row">
+  <div class="col-md-6 col-lg-4 offset-md-3 offset-lg-4 auth-page">
+    <div class="text-center mb-4">
+      <i class="fa-solid fa-compass auth-icon"></i>
+      <h3 class="page-title mt-2">Welcome back</h3>
+      <p class="text-muted">Log in to continue to WanderLust.</p>
+    </div>
+
+    <form action="/login" method="POST" novalidate class="needs-validation">
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" id="username" name="username" class="form-control" placeholder="Your username" required />
+        <div class="invalid-feedback">Please enter your username.</div>
+      </div>
+
+      <div class="mb-4">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Your password" required />
+        <div class="invalid-feedback">Please enter your password.</div>
+      </div>
+
+      <button class="btn btn-brand w-100 rounded-pill py-2">Log in</button>
+    </form>
+
+    <p class="text-center mt-4 mb-0">
+      New here? <a href="/signup" class="auth-link">Create an account</a>
+    </p>
+  </div>
+</div>

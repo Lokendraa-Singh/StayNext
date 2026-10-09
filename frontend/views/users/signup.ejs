@@ -1,0 +1,37 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="row">
+  <div class="col-md-6 col-lg-4 offset-md-3 offset-lg-4 auth-page">
+    <div class="text-center mb-4">
+      <i class="fa-solid fa-compass auth-icon"></i>
+      <h3 class="page-title mt-2">Join WanderLust</h3>
+      <p class="text-muted">Create an account to list places and write reviews.</p>
+    </div>
+
+    <form action="/signup" method="POST" novalidate class="needs-validation">
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" id="username" name="username" class="form-control" placeholder="Choose a username" required />
+        <div class="invalid-feedback">Please choose a username.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" id="email" name="email" class="form-control" placeholder="you@example.com" required />
+        <div class="invalid-feedback">Please enter a valid email.</div>
+      </div>
+
+      <div class="mb-4">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Create a password" required />
+        <div class="invalid-feedback">Please enter a password.</div>
+      </div>
+
+      <button class="btn btn-brand w-100 rounded-pill py-2">Sign up</button>
+    </form>
+
+    <p class="text-center mt-4 mb-0">
+      Already have an account? <a href="/login" class="auth-link">Log in</a>
+    </p>
+  </div>
+</div>
