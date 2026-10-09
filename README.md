@@ -1,59 +1,52 @@
-# WanderLust
+# StayNext
 
-An Airbnb-style website: browse listings, add your own place, write reviews.
-Built with Node.js, Express, MongoDB (Mongoose), EJS, Bootstrap and Passport.
+An Airbnb-style web app where you can browse stays, list your own property and write reviews.
+The site shows the brand name WanderLust.
+
+Live: `<add your Render link here>`
+Demo login: `demo` / `demo1234`
+
+## Features
+
+* Sign up / Log in / Log out (Passport.js, hashed passwords)
+* Add, edit and delete listings (only the owner can edit or delete)
+* Reviews with 1-5 star rating (only the author can delete)
+* Deleting a listing also deletes its reviews
+* Form validation (Bootstrap + Joi) and flash messages
+* Login sessions stored in MongoDB
+* Responsive design
+
+## Stack
+
+Node.js, Express, MongoDB, Mongoose, Passport.js, Joi on the backend. EJS, Bootstrap, CSS and JavaScript on the frontend.
 
 ## Folder structure
 
 ```
-WanderLust/
-├── frontend/              <- everything the user SEES
-│   ├── views/             pages (EJS): listings, users, includes, layouts, error
-│   └── public/            css/style.css and js/script.js
-│
-├── backend/               <- everything that WORKS behind the scenes
-│   ├── app.js             main server file
-│   ├── routes/            listing.js, reviews.js, user.js
-│   ├── models/            listing.js, review.js, user.js (database)
-│   ├── middleware.js      login / owner checks
-│   ├── schema.js          Joi validation
-│   ├── utils/             wrapAsync.js, expressError.js
-│   └── init/              sample data + seed script
-│
-├── package.json           packages and start scripts
-├── .env.example           copy to .env
-└── README.md
+frontend/   pages (EJS), css, js
+backend/    app.js, routes, models, middleware, validation, sample data
 ```
 
-## Run on your own computer
+## Running it locally
 
-1. Install packages: `npm install`
-2. Copy `.env.example` to `.env` (leave `ATLAS_DB_URL` empty to use local MongoDB)
-3. (Optional) add sample data: `npm run seed`
-   (creates a demo account: username `demo`, password `demo1234`)
-4. Start: `npm start` and open http://localhost:8080
+```
+npm install
+cp .env.example .env   # fill in your own values
+npm run seed           # optional: sample listings + demo user
+npm start
+```
 
-## Deploy (MongoDB Atlas + Render)
+Then open http://localhost:8080
 
-### 1. Database (MongoDB Atlas)
-1. Create a free cluster on https://www.mongodb.com/atlas
-2. Database Access -> add a user with a password
-3. Network Access -> allow `0.0.0.0/0`
-4. Connect -> Drivers -> copy the connection string and add the database name,
-   for example `mongodb+srv://USER:PASSWORD@cluster0.xxxxx.mongodb.net/wanderLust`
-5. Put this string in `.env` as `ATLAS_DB_URL`, then run `npm run seed` once
-   on your computer to fill the online database with sample listings.
+## Environment variables
 
-### 2. Code on GitHub
-Push the whole WanderLust folder (frontend + backend together) to a GitHub repository.
-`.gitignore` already keeps `node_modules` and `.env` out.
+```
+ATLAS_DB_URL=your MongoDB connection string
+SESSION_SECRET=any random string
+NODE_ENV=development
+```
 
-### 3. Render
-1. Render.com -> New -> Web Service -> connect your GitHub repo
-2. Build command: `npm install`
-3. Start command: `npm start`
-4. Environment variables:
-   - `ATLAS_DB_URL` = your Atlas string
-   - `SESSION_SECRET` = any long random text
-   - `NODE_ENV` = `production`
-5. Deploy. Your site will be live on a `.onrender.com` link.
+## Deploying
+
+Database on MongoDB Atlas. The whole app (frontend + backend) runs as one service on Render: build `npm install`, start `npm start`, and the 3 environment variables above (`NODE_ENV=production`).
+Render's free tier sleeps, so the first load can take about 30-50 seconds.
