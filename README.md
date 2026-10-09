@@ -3,7 +3,7 @@
 An Airbnb-style web app where you can browse stays, list your own property and write reviews.
 The site shows the brand name WanderLust.
 
-Live: `<add your Render link here>`
+Live:  `https://staynext-2w1m.onrender.com`
 Demo login: `demo` / `demo1234`
 
 ## Features
